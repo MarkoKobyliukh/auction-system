@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: auction-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auction_system
+    username: postgres
+    password: ABS2025
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
