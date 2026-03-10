@@ -29,10 +29,14 @@ public class Auction {
     @JoinColumn(name = "seller_id", nullable = false)
     private User seller;
 
+    @ManyToOne
+    @JoinColumn(name = "winner_id")
+    private User winner;
+
     public Auction(){}
 
     public Auction(Long id, String title, String description, double startingPrice, double currentPrice,
-                    LocalDateTime startTime, LocalDateTime endTime, AuctionStatus auctionStatus, User seller){
+                    LocalDateTime startTime, LocalDateTime endTime, AuctionStatus auctionStatus, User seller, User winner){
         this.id = id;
         this.title = title;
         this.description = description;
@@ -42,6 +46,7 @@ public class Auction {
         this.endTime = endTime;
         this.auctionStatus = auctionStatus;
         this.seller = seller;
+        this.winner = winner;
     }
 
 

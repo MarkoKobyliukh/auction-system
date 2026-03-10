@@ -1,6 +1,7 @@
 package auctionsystem.controller;
 
 import auctionsystem.dto.request.CreateAuctionRequest;
+import auctionsystem.dto.response.AuctionCloseResponse;
 import auctionsystem.dto.response.AuctionResponse;
 import auctionsystem.service.AuctionService;
 import org.springframework.http.HttpStatus;
@@ -40,6 +41,11 @@ public class AuctionController {
     @GetMapping("/seller/{sellerId}")
     public ResponseEntity<List<AuctionResponse>> getAuctionsBySeller(@PathVariable Long sellerId){
         return ResponseEntity.ok(auctionService.getAuctionsBySeller(sellerId));
+    }
+
+    @PatchMapping("/{id}/close")
+    public ResponseEntity<AuctionCloseResponse> closeAuctionById(@PathVariable Long id){
+        return ResponseEntity.ok(auctionService.closeAuctionById(id));
     }
 
 }
