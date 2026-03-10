@@ -8,6 +8,7 @@ import auctionsystem.entity.Bid;
 import auctionsystem.entity.User;
 import auctionsystem.exception.AuctionNotFoundException;
 import auctionsystem.exception.BidValidationException;
+import auctionsystem.exception.UnauthorizedAuctionActionException;
 import auctionsystem.exception.UserNotFoundException;
 import auctionsystem.repository.AuctionRepository;
 import auctionsystem.repository.BidRepository;
@@ -53,7 +54,7 @@ public class BidServiceImpl implements BidService {
             { throw new BidValidationException("The auction is closed!");}
 
         if (Objects.equals(auction.getSeller().getId(), request.getBidderId()))
-            { throw new BidValidationException("Seller can't place bids on their own auction");}
+            { throw new UnauthorizedAuctionActionException("Seller can't place bids on their own auction");}
 
         // create Bid
         Bid bid = new Bid();

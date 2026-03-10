@@ -3,6 +3,7 @@ package auctionsystem.controller;
 import auctionsystem.dto.request.CreateUserRequest;
 import auctionsystem.dto.response.UserResponse;
 import auctionsystem.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> createUser(@RequestBody CreateUserRequest request){
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody CreateUserRequest request){
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(userService.createUser(request));
     }

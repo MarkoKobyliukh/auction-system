@@ -4,6 +4,7 @@ import auctionsystem.dto.request.CreateAuctionRequest;
 import auctionsystem.dto.response.AuctionCloseResponse;
 import auctionsystem.dto.response.AuctionResponse;
 import auctionsystem.service.AuctionService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class AuctionController {
     }
 
     @PostMapping
-    public ResponseEntity<AuctionResponse> createAuction(@RequestBody CreateAuctionRequest request){
+    public ResponseEntity<AuctionResponse> createAuction(@Valid @RequestBody CreateAuctionRequest request){
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(auctionService.createAuction(request));
     }

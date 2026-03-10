@@ -1,5 +1,7 @@
 package auctionsystem.dto.request;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,8 +9,11 @@ import lombok.Setter;
 @Setter
 public class PlaceBidRequest {
 
+    @NotNull
     private Long auctionId;
+    @NotNull
     private Long bidderId;
+    @Positive
     private double amount;
 
     public PlaceBidRequest() {}
